@@ -1,4 +1,4 @@
-# Fedorentos Pet Feeder
+# Fedorentos Pet Feeder 🐈👃
 
 This is a project for my cats. Currently, I have 5 smelly felines and two of them need to eat a separate meal, so we need at least three separate pet feeders.
 
