@@ -59,7 +59,7 @@ The idea here is that each cat will have a RFID tag on its collar and the pet fe
   - Delete old sets to keep cloud data < 1 GB.
 
 ## Architecture (High Level)
-
+```
               +-----------------------------+
               |        Viam Cloud           |
               |  - Data Manager / Dataset  |
@@ -87,7 +87,7 @@ The idea here is that each cat will have a RFID tag on its collar and the pet fe
    |  (USB)   |   | (servo/    |
    |          |   |  stepper)  |
    +----------+   +------------+
-
+```
 Runtime Flow (with or without internet):
 1. Camera captures feeder image.
 2. Vision service runs local TFLite model → class (cat1..cat5/others).
