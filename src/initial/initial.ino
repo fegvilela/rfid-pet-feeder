@@ -2,8 +2,8 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-const int PINO_RST = 9;            // Definicao do pino RST
-const int PINO_SDA = 10;           // Definicao do pino SDA
+const int PINO_RST = 8;            // Definicao do pino RST
+const int PINO_SDA = 9;           // Definicao do pino SDA
 MFRC522 rfid(PINO_SDA, PINO_RST);  // Criacao do objeto "rfid" com os pinos SDA e RST definidos
 
 String conteudo;  // Define a variavel "conteudo" como uma String, essa variavel e usada para armazenar a UID da "tag" lida
