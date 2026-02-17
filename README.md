@@ -2,7 +2,6 @@
 
 This is a project for my cats. Currently, I have 5 smelly felines and two of them need to eat a separate meal, so we need at least three separate pet feeders.
 
-The idea here is that each cat will have a RFID tag on its collar and the pet feeder will open only to the "owner" of that feeder.
 
 ![cat loading](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmZ4bnQ1OGk2MGx2OTdnM2I3ajEwbjkxNnhkdTdreHpwN2ExOHprbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pY8jLmZw0ElqvVeRH4/giphy.gif)
 
