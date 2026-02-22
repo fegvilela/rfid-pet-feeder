@@ -1,0 +1,15 @@
+[Unit]
+Description=Fedorentos Pet Feeder
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/fedorentos-pet-feeder
+ExecStart=/usr/local/bin/uv run python -m src.main
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

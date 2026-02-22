@@ -1,7 +1,23 @@
 # Fedorentos Pet Feeder 🐈👃
 
-This is a project for my cats. Currently, I have 5 smelly felines and two of them need to eat a separate meal, so we need at least three separate pet feeders.
+## Overview
 
+This is an automation project for feeding my 5 cats. I have 3 automatic feeders, but access to them needs to be regulated - each feeder can be accessed by a specific group of cats.
+
+### How It Works
+
+A Raspberry Pi controls 3 servo motors that open the protective cover for each feeder individually. The system uses:
+
+- **Image Recognition**: Identifies which cat is approaching and opens the correct feeder cover
+- **Presence Sensors**: One sensor per feeder prevents the motor from closing the cover while the cat is eating
+
+This ensures each cat (or group of cats) can only access their designated feeder, solving the problem of dietary restrictions or special meals for specific cats.
+
+---
+
+## Original Idea (Deprecated)
+
+Initially, the plan was that each cat would have an RFID tag on its collar and the pet feeder would open only to the "owner" of that feeder. This was replaced by image recognition for a more seamless experience.
 
 ![cat loading](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmZ4bnQ1OGk2MGx2OTdnM2I3ajEwbjkxNnhkdTdreHpwN2ExOHprbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pY8jLmZw0ElqvVeRH4/giphy.gif)
 
@@ -97,3 +113,76 @@ Runtime Flow (with or without internet):
 ## Viam Setup
 
 More details [here](docs/viam-setup.md)
+
+---
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone <repo-url>
+cd fedorentos-pet-feeder
+```
+
+### 2. Install dependencies
+
+```bash
+uv sync
+```
+
+### 3. Configure environment variables
+
+```bash
+cp config/.env.example config/.env
+# Edit config/.env with your values
+```
+
+### 4. Run the application
+
+```bash
+uv run python -m src.main
+```
+
+---
+
+## Systemd Service (Auto-start on boot)
+
+### Install the service
+
+```bash
+sudo cp deploy/fedorentos.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable fedorentos
+sudo systemctl start fedorentos
+```
+
+### Manage the service
+
+```bash
+sudo systemctl status fedorentos   # Check status
+sudo systemctl restart fedorrentos # Restart
+sudo systemctl stop fedorrentos    # Stop
+journalctl -u fedorrentos -f       # View logs
+```
+
+---
+
+## Project Structure
+
+```
+src/
+├── main.py              # Entry point
+├── config.py            # Environment configuration
+├── viam_connection.py   # Viam SDK connection
+├── hardware/
+│   ├── servo_controller.py   # Servo motor control
+│   └── presence_sensor.py    # PIR sensor reading
+├── vision/
+│   └── classifier.py    # Cat image classification
+├── feeder/
+│   ├── feeder.py        # Individual feeder logic
+│   └── feeder_manager.py # Orchestrates all feeders
+└── utils/
+    └── logger.py        # Logging configuration
+```
